@@ -1,0 +1,15 @@
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\bin\Debug\net472\AtcCtrl.dll
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\bin\Debug\net472\AtcCtrl.pdb
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\bin\Debug\net472\ATCDll.dll
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\bin\Debug\net472\ATCDll.pdb
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net472\AtcCtrl.csproj.AssemblyReference.cache
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net472\AtcCtrl.ATCRTF.resources
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net472\AtcCtrl.Properties.Resources.resources
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net472\AtcCtrl.csproj.GenerateResource.cache
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net472\AtcCtrl.GeneratedMSBuildEditorConfig.editorconfig
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net472\AtcCtrl.AssemblyInfoInputs.cache
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net472\AtcCtrl.AssemblyInfo.cs
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net472\AtcCtrl.csproj.CoreCompileInputs.cache
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net472\AtcCtrl.csproj.CopyComplete
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net472\AtcCtrl.dll
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net472\AtcCtrl.pdb

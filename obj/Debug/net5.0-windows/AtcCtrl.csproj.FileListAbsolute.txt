@@ -1,0 +1,14 @@
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\bin\Debug\net5.0-windows\AtcCtrl.deps.json
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\bin\Debug\net5.0-windows\AtcCtrl.dll
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\bin\Debug\net5.0-windows\ref\AtcCtrl.dll
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\bin\Debug\net5.0-windows\AtcCtrl.pdb
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net5.0-windows\AtcCtrl.csproj.AssemblyReference.cache
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net5.0-windows\AtcCtrl.ATCRTF.resources
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net5.0-windows\AtcCtrl.csproj.GenerateResource.cache
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net5.0-windows\AtcCtrl.GeneratedMSBuildEditorConfig.editorconfig
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net5.0-windows\AtcCtrl.AssemblyInfoInputs.cache
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net5.0-windows\AtcCtrl.AssemblyInfo.cs
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net5.0-windows\AtcCtrl.csproj.CoreCompileInputs.cache
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net5.0-windows\AtcCtrl.dll
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net5.0-windows\ref\AtcCtrl.dll
+C:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net5.0-windows\AtcCtrl.pdb

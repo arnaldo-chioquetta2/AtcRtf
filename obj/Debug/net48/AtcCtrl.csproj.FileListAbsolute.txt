@@ -26,5 +26,5 @@ D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net48\AtcCtrl.AssemblyInfo.cs
 D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net48\AtcCtrl.csproj.CoreCompileInputs.cache
 D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net48\AtcCtrl.dll
 D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net48\AtcCtrl.pdb
-D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net48\AtcCtrl.csproj.Up2Date
 D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net48\AtcCtrl.sourcelink.json
+D:\Prog\T-Bonifacio\AtcCtrl\AtcCtrl\obj\Debug\net48\AtcCtrl.csproj.Up2Date

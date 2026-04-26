@@ -8,8 +8,11 @@ using System.Globalization;
 using System.Windows.Forms;
 using System.Drawing.Printing;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
+// 1.3.1 Impedir o cursos do mouse ficar mudando a cada instante
+// 1.3.0 Impressão completa em vez de ser só a primeira página
 // 1.2.9 SalvaRTF publico
 // 1.2.8 Caso não exista arquivo, cria
 // 1.2.7 Previsão pra arquivo inicialmente inválido
@@ -29,6 +32,8 @@ namespace AtcCtrl
         private bool carregando = false;
 
         private float vlrPerImr = 1.0f;
+        private int checkPrint = 0;
+
         public float VlrPerImr
         {
             get { return vlrPerImr; }
@@ -36,7 +41,7 @@ namespace AtcCtrl
             {
                 if (vlrPerImr != value)
                 {
-                    vlrPerImr = value;                    
+                    vlrPerImr = value;
                 }
             }
         }
@@ -45,6 +50,49 @@ namespace AtcCtrl
         private string NomeArq;
 
         public event EventHandler<bool> VlrPerImrChanged;
+
+        #region SendMessage
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+
+        // 🔥 CONSTANTES QUE FALTAVAM
+        private const int WM_USER = 0x0400;
+        private const int EM_FORMATRANGE = WM_USER + 57;
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct CHARRANGE
+        {
+            public int cpMin;
+            public int cpMax;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
+        {
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct FORMATRANGE
+        {
+            public IntPtr hdc;
+            public IntPtr hdcTarget;
+            public RECT rc;
+            public RECT rcPage;
+            public CHARRANGE chrg;
+        }
+
+        #endregion
+
+        // 🔥 LIMPEZA DO CACHE DE IMPRESSÃO (OBRIGATÓRIO)
+        private void PrintDoc_EndPrint(object sender, PrintEventArgs e)
+        {
+            SendMessage(rtfTexto.Handle, EM_FORMATRANGE, IntPtr.Zero, IntPtr.Zero);
+        }
 
         public ATCRTF()
         {
@@ -89,6 +137,7 @@ namespace AtcCtrl
 
         private string termoBusca = "";
         private int posicaoBusca = 0;
+        private Cursor cursorAtual = Cursors.IBeam;
 
         private void IniciarBusca()
         {
@@ -469,17 +518,24 @@ namespace AtcCtrl
         private void rtfTexto_MouseMove(object sender, MouseEventArgs e)
         {
             int charIndex = rtfTexto.GetCharIndexFromPosition(e.Location);
+
+            Cursor novoCursor = Cursors.IBeam;
+
             if (charIndex >= 0 && charIndex < rtfTexto.Text.Length)
             {
                 string word = GetWordAtIndex(charIndex);
+
                 if (IsValidUrl(word))
                 {
-                    rtfTexto.Cursor = Cursors.Hand;
+                    novoCursor = Cursors.Hand;
                 }
-                else
-                {
-                    rtfTexto.Cursor = Cursors.IBeam;
-                }
+            }
+
+            // 🔥 SÓ ALTERA SE FOR DIFERENTE
+            if (cursorAtual != novoCursor)
+            {
+                cursorAtual = novoCursor;
+                rtfTexto.Cursor = novoCursor;
             }
         }
 
@@ -520,7 +576,17 @@ namespace AtcCtrl
 
         private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            rtfTexto.PrintRTFContent(e);
+            checkPrint = rtfTexto.PrintRTFContent(e, checkPrint);
+                
+            if (checkPrint < rtfTexto.TextLength)
+            {
+                e.HasMorePages = true;
+            }
+            else
+            {
+                e.HasMorePages = false;
+                checkPrint = 0;
+            }
         }
 
         private void AjustarFonteParaTamanhoMaximo()

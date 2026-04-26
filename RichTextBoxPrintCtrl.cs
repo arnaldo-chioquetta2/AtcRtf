@@ -13,10 +13,11 @@ namespace AtcCtrl
 
         private const int WM_USER = 0x0400;
         private const int EM_FORMATRANGE = WM_USER + 57;
+        private int checkPrint = 0;
 
-        public void PrintRTFContent(PrintPageEventArgs e)
+        public int PrintRTFContent(PrintPageEventArgs e, int checkPrint)
         {
-            // Configura a área de impressão
+            // Área de impressão (margens)
             RECT rectToPrint = new RECT
             {
                 Top = HundredthsInchToTwips(e.MarginBounds.Top),
@@ -25,6 +26,7 @@ namespace AtcCtrl
                 Right = HundredthsInchToTwips(e.MarginBounds.Right)
             };
 
+            // Área total da página
             RECT rectPage = new RECT
             {
                 Top = HundredthsInchToTwips(e.PageBounds.Top),
@@ -33,7 +35,6 @@ namespace AtcCtrl
                 Right = HundredthsInchToTwips(e.PageBounds.Right)
             };
 
-            // Configura o dispositivo de impressão
             IntPtr hdc = e.Graphics.GetHdc();
 
             FORMATRANGE fmtRange = new FORMATRANGE
@@ -42,18 +43,26 @@ namespace AtcCtrl
                 hdcTarget = hdc,
                 rc = rectToPrint,
                 rcPage = rectPage,
-                chrg = new CHARRANGE { cpMin = 0, cpMax = -1 }
+
+                // 🔥 AQUI ESTÁ A CORREÇÃO
+                chrg = new CHARRANGE
+                {
+                    cpMin = checkPrint,         // começa de onde parou
+                    cpMax = this.TextLength     // vai até o fim
+                }
             };
 
-            // Envia a mensagem para formatar e imprimir o conteúdo
             IntPtr wParam = new IntPtr(1);
             IntPtr lParam = Marshal.AllocCoTaskMem(Marshal.SizeOf(fmtRange));
             Marshal.StructureToPtr(fmtRange, lParam, false);
-            SendMessage(this.Handle, EM_FORMATRANGE, wParam, lParam);
-            Marshal.FreeCoTaskMem(lParam);
 
-            // Libera o contexto do dispositivo gráfico
+            // 🔥 RETORNA O PRÓXIMO CARACTERE
+            int nextChar = SendMessage(this.Handle, EM_FORMATRANGE, wParam, lParam).ToInt32();
+
+            Marshal.FreeCoTaskMem(lParam);
             e.Graphics.ReleaseHdc(hdc);
+
+            return nextChar;
         }
 
         private int HundredthsInchToTwips(int n)

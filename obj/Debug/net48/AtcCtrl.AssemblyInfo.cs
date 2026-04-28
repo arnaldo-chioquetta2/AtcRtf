@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("AtcCtrl")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.3.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.3.1+116820b8aa5c15aa676ba6496b0af2667e0f8e7d")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.3.2.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.3.2+31d6069355c9dda37942cf85e02bce69b62d0417")]
 [assembly: System.Reflection.AssemblyProductAttribute("AtcCtrl")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AtcCtrl")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.3.1.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.3.2.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
 

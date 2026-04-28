@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Printing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Drawing;
-using TeleBonifacio.gen;
-using System.Diagnostics;
-using System.Globalization;
-using System.Windows.Forms;
-using System.Drawing.Printing;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using TeleBonifacio.gen;
 
+// 1.3.2 Obtém ou define o conteúdo em formato RTF do controle interno.
 // 1.3.1 Impedir o cursos do mouse ficar mudando a cada instante
 // 1.3.0 Impressão completa em vez de ser só a primeira página
 // 1.2.9 SalvaRTF publico
@@ -765,6 +767,24 @@ namespace AtcCtrl
             }
 
             return resultado;
+        }
+
+        [Browsable(true)]
+        [Category("Appearance")]
+        [Description("Obtém ou define o conteúdo em formato RTF do controle interno.")]
+        public string RtfConteudo
+        {
+            get
+            {
+                return rtfTexto.Rtf;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    rtfTexto.Clear();
+                else
+                    rtfTexto.Rtf = value;
+            }
         }
 
     }

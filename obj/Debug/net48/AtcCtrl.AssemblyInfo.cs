@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AtcCtrl")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.3.2.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.3.2+31d6069355c9dda37942cf85e02bce69b62d0417")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.3.2+8a8e5069ce668ddafd4b3c59d2b5c0ad1d45d296")]
 [assembly: System.Reflection.AssemblyProductAttribute("AtcCtrl")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AtcCtrl")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.3.2.0")]

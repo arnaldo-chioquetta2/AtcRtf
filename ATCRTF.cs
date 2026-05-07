@@ -12,6 +12,8 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TeleBonifacio.gen;
 
+// C: \Users\Dayse\AppData\Roaming\npm\codex resume 019dffe7-1937-7b70-a9ac-21349d6817b7
+
 // 1.3.2 Obtém ou define o conteúdo em formato RTF do controle interno.
 // 1.3.1 Impedir o cursos do mouse ficar mudando a cada instante
 // 1.3.0 Impressão completa em vez de ser só a primeira página
@@ -32,6 +34,7 @@ namespace AtcCtrl
         public bool Criptografia = false;
         public string caminhoDoArquivo = "";
         private bool carregando = false;
+        private bool modoExtra = false;
 
         private float vlrPerImr = 1.0f;
         private int checkPrint = 0;
@@ -52,6 +55,16 @@ namespace AtcCtrl
         private string NomeArq;
 
         public event EventHandler<bool> VlrPerImrChanged;
+
+        [Browsable(true)]
+        [Category("Behavior")]
+        [Description("Define se o componente está em modo extra.")]
+        [DefaultValue(false)]
+        public bool ModoExtra
+        {
+            get { return modoExtra; }
+            set { modoExtra = value; }
+        }
 
         #region SendMessage
 
@@ -330,6 +343,23 @@ namespace AtcCtrl
             rtfTexto.Select(lineStart, lineEnd - lineStart);
         }
 
+        private string ObterTextoDaSelecaoOuLinhaAtual()
+        {
+            if (rtfTexto.SelectionLength > 0)
+            {
+                return rtfTexto.SelectedText;
+            }
+
+            int selectionStart = rtfTexto.SelectionStart;
+            int selectionLength = rtfTexto.SelectionLength;
+
+            SelectCurrentLine();
+            string texto = rtfTexto.SelectedText;
+            rtfTexto.Select(selectionStart, selectionLength);
+
+            return texto;
+        }
+
         private void toolStripButtonRedo_Click(object sender, EventArgs e)
         {
             if (rtfTexto.CanRedo)
@@ -380,11 +410,30 @@ namespace AtcCtrl
 
         private void tsAzul_Click(object sender, EventArgs e)
         {
+            string textoCopiado = ObterTextoDaSelecaoOuLinhaAtual();
             ApplyStyleToLineOrSelection(null, () => rtfTexto.SelectionColor = Color.Blue);
+
+            if (ModoExtra && !string.IsNullOrWhiteSpace(textoCopiado))
+            {
+                try
+                {
+                    Clipboard.SetText(textoCopiado);
+                }
+                catch
+                {
+                    // Mantém a formatação mesmo se a área de transferência falhar.
+                }
+            }
         }
 
         private void tsVerde_Click(object sender, EventArgs e)
         {
+            if (ModoExtra && rtfTexto.SelectionLength == 0)
+            {
+                ConverterTextoAzulParaVerde();
+                return;
+            }
+
             ApplyStyleToLineOrSelection(null, () => rtfTexto.SelectionColor = Color.Green);
         }
 
@@ -401,6 +450,24 @@ namespace AtcCtrl
         private void tsCinza_Click(object sender, EventArgs e)
         {
             ApplyStyleToLineOrSelection(null, () => rtfTexto.SelectionColor = Color.Gray);
+        }
+
+        private void ConverterTextoAzulParaVerde()
+        {
+            int selectionStart = rtfTexto.SelectionStart;
+            int selectionLength = rtfTexto.SelectionLength;
+            int textLength = rtfTexto.TextLength;
+
+            for (int i = 0; i < textLength; i++)
+            {
+                rtfTexto.Select(i, 1);
+                if (rtfTexto.SelectionColor == Color.Blue)
+                {
+                    rtfTexto.SelectionColor = Color.Green;
+                }
+            }
+
+            rtfTexto.Select(selectionStart, selectionLength);
         }
 
         private void toolStripButtonEncrypt_Click(object sender, EventArgs e)
@@ -538,6 +605,27 @@ namespace AtcCtrl
             {
                 cursorAtual = novoCursor;
                 rtfTexto.Cursor = novoCursor;
+            }
+        }
+
+        private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rtfTexto.SelectionLength > 0)
+            {
+                rtfTexto.Copy();
+            }
+        }
+
+        private void colarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtfTexto.Paste();
+        }
+
+        private void recortarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rtfTexto.SelectionLength > 0)
+            {
+                rtfTexto.Cut();
             }
         }
 

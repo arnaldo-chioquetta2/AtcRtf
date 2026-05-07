@@ -31,7 +31,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.3.2",
+    "version": "1.3.5",
     "restore": {
       "projectUniqueName": "D:\\Prog\\T-Bonifacio\\AtcCtrl\\AtcCtrl\\AtcCtrl.csproj",
       "projectName": "AtcCtrl",

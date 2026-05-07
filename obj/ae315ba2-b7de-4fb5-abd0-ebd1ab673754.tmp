@@ -5,12 +5,12 @@
   },
   "projects": {
     "D:\\Prog\\T-Bonifacio\\AtcCtrl\\AtcCtrl\\AtcCtrl.csproj": {
-      "version": "1.3.5",
+      "version": "1.3.2",
       "restore": {
         "projectUniqueName": "D:\\Prog\\T-Bonifacio\\AtcCtrl\\AtcCtrl\\AtcCtrl.csproj",
         "projectName": "AtcCtrl",
         "projectPath": "D:\\Prog\\T-Bonifacio\\AtcCtrl\\AtcCtrl\\AtcCtrl.csproj",
-        "packagesPath": "C:\\Users\\Dayse\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\CodexSandboxOffline\\.nuget\\packages\\",
         "outputPath": "D:\\Prog\\T-Bonifacio\\AtcCtrl\\AtcCtrl\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -63,7 +63,7 @@
         "projectUniqueName": "D:\\Prog\\T-Bonifacio\\ATCDll\\ATCDll\\ATCDll.csproj",
         "projectName": "ATCDll",
         "projectPath": "D:\\Prog\\T-Bonifacio\\ATCDll\\ATCDll\\ATCDll.csproj",
-        "packagesPath": "C:\\Users\\Dayse\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\CodexSandboxOffline\\.nuget\\packages\\",
         "outputPath": "D:\\Prog\\T-Bonifacio\\ATCDll\\ATCDll\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
